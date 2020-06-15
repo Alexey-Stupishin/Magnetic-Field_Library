@@ -5,8 +5,6 @@
 ; v 2.1.20.505 (rev.294)
 ; min WWWNLFFFReconstruction.dll version: 2.1.20.428 (rev.293)
 ; 
-; NB! Beta-version!
-; 
 ; Call:
 ; non_stored = gx_box_calculate_lines(dll_location, box $
 ;                        , status = status, physLength = physLength, avField = avField, startIdx = startIdx, endIdx = endIdx $
@@ -94,6 +92,8 @@
 ;   Return value:
 ;     Normally 0. If not all lines are stored, returns the number of non-stored lines
 ;    
+;   Note, that wrapping library also provides interfaces for C/C++ and MATLAB
+;   
 ; (c) Alexey G. Stupishin, Saint Petersburg State University, Saint Petersburg, Russia, 2017-2020
 ;     mailto:agstup@yandex.ru
 ;
