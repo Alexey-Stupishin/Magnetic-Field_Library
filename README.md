@@ -1,17 +1,14 @@
-# Magnetic library
+# Magnetic-Field library
 
-The repository contains IDL routines For preparing a GX-simulator compatible box files.  The practical usage description is given in the provided [instruction](doc/gx_box_instruction.md) .
-
+The repository contains Magnetic Field Library (Windows DLL written on c++) and wrappers for IDL calls.
 
 ## Dependencies
-All routines are designed to be used in [Solar Soft](http://www.lmsal.com/solarsoft/sswdoc/sswdoc_jtop.html) environment and requre _SDO/HMI_ and _Ontology_ packages.
+All routines are designed to be used in _gxbox_ subpackage of _GX-simulator_ package, which includes in [Solar Soft](http://www.lmsal.com/solarsoft/sswdoc/sswdoc_jtop.html) environment.
 
 ## Routines
-* [GX_BOX_DOWNLOD_HMI_DATA](doc/gx_box_download_hmi_data.md)
-* [GX_BOX_CREATE](doc/gx_box_create.md)
-* [GX_BOX_MAKE_POTENTIAL_FIELD](doc/gx_box_make_potential_field.md)
-* [GX_BOX_ADD_REFMAP](doc/gx_box_add_refmap.md)
-* [PREPARE_BASEMAPS](doc/prepare_basemaps.md)
-* [WCS_REMAP](doc/wcs_remap.md)
-* [BASEMAP2FITS](doc/basemap2fits.md)
-* [PREPARE_CEA_MAP(obsolete)](doc/prepare_cea_map.md)
+* _WWNLFFFReconstruction.dll_ - mail calculation library
+* _gx_box_calculate_lines.pro_ - IDL wrapper to calculate megnetic field lines
+* _gx_box_make_nlfff_wwas_field.pro_ - IDL wrapper to reconstruct non-linear force-free magnetic field by Wiegelmann (weighted) method
+
+## Update History
+* 04 October 2020 (v 2.1.20.1004, rev.363)	   _weight_bound_size_ key added to _gx_box_make_nlfff_wwas_field.pro_, see comment inside
