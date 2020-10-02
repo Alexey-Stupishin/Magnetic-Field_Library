@@ -1,4 +1,4 @@
-# GX box preparation library
+# Magnetic library
 
 The repository contains IDL routines For preparing a GX-simulator compatible box files.  The practical usage description is given in the provided [instruction](doc/gx_box_instruction.md) .
 
