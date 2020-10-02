@@ -11,4 +11,4 @@ All routines are designed to be used in _gxbox_ subpackage of _GX-simulator_ pac
 * _gx_box_make_nlfff_wwas_field.pro_ - IDL wrapper to reconstruct non-linear force-free magnetic field by Wiegelmann (weighted) method
 
 ## Update History
-* 04 October 2020 (v 2.1.20.1004, rev.363)	   _weight_bound_size_ key added to _gx_box_make_nlfff_wwas_field.pro_, see comment inside
+* 04 October 2020 (v 2.1.20.1004, rev.363)  _weight_bound_size_ key added to _gx_box_make_nlfff_wwas_field.pro_, see comment inside
