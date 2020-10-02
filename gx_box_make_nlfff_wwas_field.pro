@@ -1,6 +1,7 @@
 ;
 ; IDL Wrapper to external call of Weighted Wiegelmann NLFF Field Reconstruction Method library
-; v 1.1.18.1027 (rev.78)
+; v 2.1.20.1004 (rev.363)
+; min WWWNLFFFReconstruction.dll version: 2.1.20.428 (rev.293)
 ; 
 ; Call:
 ; rc = gx_box_make_nlfff_wwas_field(dll_location, box, _extra = _extra)
@@ -11,6 +12,11 @@
 ;   (in)      dll_location    - full path to calling DLL
 ;   (in/out)  box             - GX-simulator box with initial model of field bx, by, bz
 ;   
+; Parameters optional (in):
+;   (in)      weight_bound_size    - weight bounary buffer zone size (in parts of corresponding dim. size),
+;                                    default is 0.1 (i.e. buffer zone is 10% of dimension size from all boundaries,
+;                                    except photosphere plain). Use weight_bound_size = 0 for no-buffer-zone approach 
+; 
 ; Parameters optional (in): conditions general
 ;   add_conditions_mode       - 0 - no add conditions, 
 ;                               1 - conditions as functional (default, if any of conditions applied, otherwise 0), 
