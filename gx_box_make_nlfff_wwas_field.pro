@@ -1,7 +1,7 @@
 ;
 ; IDL Wrapper to external call of Weighted Wiegelmann NLFF Field Reconstruction Method library
-; v 2.1.20.1004 (rev.363)
-; min WWWNLFFFReconstruction.dll version: 2.1.20.428 (rev.293)
+; v 2.2.21.125 (rev.384)
+; min WWWNLFFFReconstruction.dll version: v 2.2.21.125 (rev.384)
 ; 
 ; Call:
 ; rc = gx_box_make_nlfff_wwas_field(dll_location, box, _extra = _extra)
@@ -199,9 +199,12 @@ function gx_box_make_nlfff_wwas_field, dll_location, box, version_info = version
             value[25] = 0
           end
         else: begin
-            parameterMap[nParameters].itemName = keys[i]
-            parameterMap[nParameters].itemValue = _extra.(i)
-            nParameters = nParameters + 1
+            v = _extra.(i)
+            if isa(v, /number) && ~isa(v, /array) && imaginary(v) eq 0 then begin
+                parameterMap[nParameters].itemName = keys[i]
+                parameterMap[nParameters].itemValue = v
+                nParameters = nParameters + 1
+            end
           end
       endcase
     endfor
