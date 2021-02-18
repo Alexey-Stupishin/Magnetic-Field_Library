@@ -13,3 +13,7 @@ All routines are designed to be used in _gxbox_ subpackage of _GX-simulator_ pac
 ## Update History
 * 04 October 2020 (v 2.1.20.1004, rev.363): _weight_bound_size_ key added to _gx_box_make_nlfff_wwas_field.pro_, see comment inside
 * 25 January 2021 (v 2.2.21.125, rev.384): bug fixed (_extra parameters could prevent NLFFF in some cases)
+* 18 February 2021 (v 2.3.21.217, rev.392):
+	* bug fixed (it was crash when calculated with seeds)
+	* improvement (all lines calculated, even if seed below chromo_level); but only part above chromo_level is stored
+	* comment in _gx_box_calculate_lines.pro_ utility corrected, so that is less confusing

@@ -2,20 +2,23 @@
 ; IDL Wrapper to external call to claculate magnetic fields line properties
 ;   using Weighted Wiegelmann NLFF Field Reconstruction library
 ;   
-; v 2.1.20.505 (rev.294)
-; min WWWNLFFFReconstruction.dll version: 2.1.20.428 (rev.293)
+; v 2.3.21.217 (rev.392)
+; min WWWNLFFFReconstruction.dll version: v 2.3.21.217 (rev.392)
 ; 
-; Call:
-; non_stored = gx_box_calculate_lines(dll_location, box $
-;                        , status = status, physLength = physLength, avField = avField, startIdx = startIdx, endIdx = endIdx $
-;                        , inputSeeds = inputSeeds $
-;                        , maxLength = maxLength $
-;                        , coords = coords, linesPos = linesPos, linesLength = linesLength, seedIdx = seedIdx $
-;                        , codes = codes $
-;                        , totalLength = totalLength, nLines = nLines, nPassed = nPassed $
-;                        , version_info = version_info $
-;                        , reduce_passed = reduce_passed, n_processes = n_processes, chromo_level = chromo_level, line_step = line_step $  
-;                        )
+; Call (see parameters and comments below):
+; non_stored = gx_box_calculate_lines( $
+;                          dll_location, box $ ; Required
+;                        , inputSeeds = <array>, maxLength = <number> $ ; Optional input
+;                        , reduce_passed = <number>, n_processes = <number>, chromo_level = <number>, line_step = <number> $ ; Optional input  
+;                        , inputSeeds = <array>, maxLength = <number> $ ; Optional input
+;                        , reduce_passed = <number>, n_processes = <number>, chromo_level = <number>, line_step = <number> $ ; Optional input  
+;                        , status = status, physLength = physLength, avField = avField $ ; Optional output
+;                        , startIdx = startIdx, endIdx = endIdx, apexIdx = apexIdx, seedIdx = seedIdx $ ; Optional output
+;                        , totalLength = totalLength, nLines = nLines, nPassed = nPassed $ ; Optional output
+;                        , coords = coords, linesPos = linesPos, linesLength = linesLength, linesIndex = linesIndex $ ; Optional output
+;                        , codes = codes $ ; Optional output
+;                        , version_info = version_info ; Optional output
+;                                    )
 ; 
 ; Parameters description (see also section Comments below):
 ; 
@@ -31,7 +34,8 @@
 ;   (in)      inputSeeds     (3xN double)   coordinates of line seeds; if omitted or !NULL, all voxels
 ;                                           are considered as seeds (for coordinates [0, 0, 0], [1, 0, 0] etc.)     
 ;   (in)      maxLength      (integer)      maximum number of stored points for all calculated lines 
-;                                           (can be uint64)
+;                                           (can be uint64). If not set or eq 0, no coords, linesPos, linesLength, 
+;                                           linesIndex will be stored 
 ;   
 ; Parameters optional (out):
 ;   (for arrays indexing see Comments below)
@@ -94,7 +98,7 @@
 ;    
 ;   Note, that wrapping library also provides interfaces for C/C++ and MATLAB
 ;   
-; (c) Alexey G. Stupishin, Saint Petersburg State University, Saint Petersburg, Russia, 2017-2020
+; (c) Alexey G. Stupishin, Saint Petersburg State University, Saint Petersburg, Russia, 2017-2021
 ;     mailto:agstup@yandex.ru
 ;
 ;--------------------------------------------------------------------------;
@@ -144,14 +148,16 @@ function gxl_transpIdx, data, sizes, isTransp ; sizes in AGS CS
 end
 
 ;------------------------------------------------------------------------------------------
-function gx_box_calculate_lines, dll_location, box $
-    , status = status, physLength = physLength, avField = avField $
-    , startIdx = startIdx, endIdx = endIdx, apexIdx = apexIdx, seedIdx = seedIdx $
-    , inputSeeds = inputSeeds, maxLength = maxLength $
-    , totalLength = totalLength, nLines = nLines, nPassed = nPassed $
-    , coords = coords, linesPos = linesPos, linesLength = linesLength, linesIndex = linesIndex $
-    , codes = codes $
-    , version_info = version_info, _extra = _extra
+function gx_box_calculate_lines $
+    , dll_location, box $ ; Required
+    , inputSeeds = inputSeeds, maxLength = maxLength $ ; Optional input
+    , _extra = _extra $ ; Optional input
+    , status = status, physLength = physLength, avField = avField $ ; Optional output
+    , startIdx = startIdx, endIdx = endIdx, apexIdx = apexIdx, seedIdx = seedIdx $ ; Optional output
+    , totalLength = totalLength, nLines = nLines, nPassed = nPassed $ ; Optional output
+    , coords = coords, linesPos = linesPos, linesLength = linesLength, linesIndex = linesIndex $ ; Optional output
+    , codes = codes $ ; Optional output
+    , version_info = version_info ; Optional output
 
     b = bytarr(512)
     b(*) = 32B
@@ -174,9 +180,9 @@ function gx_box_calculate_lines, dll_location, box $
         reduce_passed = 0
     endif else begin
         vseeds = 0L
-        value[11] = 1
+        value[12] = 1
         NVox = n_elements(box.bx)
-        reduce_passed = 1
+        reduce_passed = 3
     endelse
   
     if arg_present(status)      then vstatus      = lonarr(NVox) else gxl_setNULL, vstatus,      value, 5 

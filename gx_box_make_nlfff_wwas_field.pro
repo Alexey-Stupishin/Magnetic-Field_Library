@@ -1,7 +1,7 @@
 ;
 ; IDL Wrapper to external call of Weighted Wiegelmann NLFF Field Reconstruction Method library
-; v 2.2.21.125 (rev.384)
-; min WWWNLFFFReconstruction.dll version: v 2.2.21.125 (rev.384)
+; v 2.3.21.217 (rev.392)
+; min WWWNLFFFReconstruction.dll version: v 2.3.21.217 (rev.392)
 ; 
 ; Call:
 ; rc = gx_box_make_nlfff_wwas_field(dll_location, box, _extra = _extra)
