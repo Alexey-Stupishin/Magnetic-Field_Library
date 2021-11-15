@@ -100,7 +100,7 @@
 ;   
 ; (c) Alexey G. Stupishin, Saint Petersburg State University, Saint Petersburg, Russia, 2017-2021
 ;     mailto:agstup@yandex.ru
-;
+; 
 ;--------------------------------------------------------------------------;
 ;     \|/     Set the Controls for the Heart of the Sun           \|/      ;
 ;    --O--        Pink Floyd, "A Saucerful Of Secrets", 1968     --O--     ;
