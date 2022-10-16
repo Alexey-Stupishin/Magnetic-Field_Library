@@ -100,7 +100,7 @@
 ;   
 ; (c) Alexey G. Stupishin, Saint Petersburg State University, Saint Petersburg, Russia, 2017-2021
 ;     mailto:agstup@yandex.ru
-; 
+;
 ;--------------------------------------------------------------------------;
 ;     \|/     Set the Controls for the Heart of the Sun           \|/      ;
 ;    --O--        Pink Floyd, "A Saucerful Of Secrets", 1968     --O--     ;
@@ -216,20 +216,22 @@ function gx_box_calculate_lines $
     if n gt 0 then begin
         keys = strlowcase(tag_names(_extra))
         for i = 0, n-1 do begin
-            if strcmp(keys[i], 'line_step') then begin
-                parameterMap[nParameters].itemName = 'step'
-            endif else begin
-                parameterMap[nParameters].itemName = keys[i]
-            endelse
-                 
-            if strcmp(keys[i], 'chromo_level') then begin
-                parameterMap[nParameters].itemValue = double(_extra.(i))/wcs_rsun()/box.dr[2] *1000
-            endif else if strcmp(keys[i], 'reduce_passed') then begin
+            if strcmp(keys[i], 'reduce_passed') then begin
                 reduce_passed = _extra.(i)
-            endif else begin
-                parameterMap[nParameters].itemValue = _extra.(i)
-            endelse     
-            nParameters = nParameters + 1
+            endif else begin    
+                if strcmp(keys[i], 'line_step') then begin
+                    parameterMap[nParameters].itemName = 'step'
+                endif else begin
+                    parameterMap[nParameters].itemName = keys[i]
+                endelse
+                     
+                if strcmp(keys[i], 'chromo_level') then begin
+                    parameterMap[nParameters].itemValue = double(_extra.(i))/wcs_rsun()/box.dr[2] *1000
+                endif else begin
+                    parameterMap[nParameters].itemValue = _extra.(i)
+                endelse     
+                nParameters = nParameters + 1
+            endelse    
          endfor
     endif
     parameterMap[nParameters].itemName = 'reduce_passed'

@@ -17,4 +17,6 @@ All routines are designed to be used in _gxbox_ subpackage of _GX-simulator_ pac
 	* bug fixed (it was crash when calculated with seeds)
 	* improvement (all lines calculated, even if seed below chromo_level); but only part above chromo_level is stored
 	* comment in _gx_box_calculate_lines.pro_ utility corrected, so that is less confusing
-* 16 October 2022 (v 2.4.22.1016, rev.625): small bug for short low loops fixed
+* 16 October 2022 (v 2.4.22.1016, rev.625): 
+        * small bug for short low loops fixed
+        * small lines wrapper correction
