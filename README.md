@@ -9,7 +9,7 @@ The repository contains:
 * wrappers for IDL calls
 
 ## Dependencies
-All routines are designed to be used in _gxbox_ subpackage of [GX-simulator](https://github.com/Gelu-Nita/GX_SIMULATOR) package, which includes in [Solar Soft](http://www.lmsal.com/solarsoft/sswdoc/sswdoc_jtop.html) environment.
+IDL wrappers are designed to be used as subpackage of [GX-simulator](https://github.com/Gelu-Nita/GX_SIMULATOR) package, which included in [Solar Soft](http://www.lmsal.com/solarsoft/sswdoc/sswdoc_jtop.html) environment.
 
 To rebild the project it is necessry to clone [common](https://github.com/Alexey-Stupishin/Common) repository and placed it at the same directory tree level as Magnetic Field Library.
 
