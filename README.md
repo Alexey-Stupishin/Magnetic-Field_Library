@@ -2,7 +2,7 @@
 
 [Refer to the latest stable release: doi:10.5281/zenodo.3896222](https://zenodo.org/record/3896223#.Y13LRHZBxJQ)
 
-The repository 
+The repository contains:
 * sources of Magnetic Field Library (C++11)
 * Windows .dll and Linux .so libraries
 * project for build under Windows and Linux
@@ -17,20 +17,14 @@ To rebild the project it is necessry to clone [common](https://github.com/Alexey
 * _/binaries/WWNLFFFReconstruction.dll_ - Calculation library for Windows
 * _/binaries/WWNLFFFReconstruction.so_ - Calculation library for Linux
 * _/idl/gx_box_calculate_lines.pro_ - IDL wrapper to calculate megnetic field lines
-* _/idl/gx_box_make_nlfff_wwas_field.pro_ - IDL wrapper to reconstruct non-linear force-free magnetic field (NLFFF) by Wiegelmann (weighted) method
+* _/idl/gx_box_make_nlfff_wwas_field.pro_ - IDL wrapper to reconstruct non-linear force-free magnetic field (NLFFF) by T.Wiegelmann (weighted) method
 * _/idl/gx_box_field_library_version.pro_ - IDL wrapper to get
 * _/sources_ - source codes (C++11)
 * _/Windows_ - MSVC project for Windows
 * _/Linux_ - makefile for Linux
 
 For NLFFF Weghted method refer to:
-Wiegelmann, T. (2004). Optimization code with weighting function for the reconstruction of coronal magnetic fields.Solar Phys. 219, 87–108. 
-
-[doi:10.1023/B:SOLA.0000021799.39465.36](https://link.springer.com/article/10.1023/B:SOLA.0000021799.39465.36)
-
-[ADS:2004SoPh..219...87W](https://ui.adsabs.harvard.edu/abs/2004SoPh..219...87W/abstract)
-
-[arXiv:0802.0124](https://arxiv.org/abs/0802.0124)
+Wiegelmann, T. (2004). Optimization code with weighting function for the reconstruction of coronal magnetic fields. _Solar Phys_. __219__, 87–108. ([doi:10.1023/B:SOLA.0000021799.39465.36](https://link.springer.com/article/10.1023/B:SOLA.0000021799.39465.36), [ADS:2004SoPh..219...87W](https://ui.adsabs.harvard.edu/abs/2004SoPh..219...87W/abstract), [arXiv:0802.0124](https://arxiv.org/abs/0802.0124))
 
 ## Update History
 * 16 June 2020 - 1st release (v 2.1.20.428), [doi:10.5281/zenodo.3896222](https://zenodo.org/record/3896223#.Y13LRHZBxJQ)
