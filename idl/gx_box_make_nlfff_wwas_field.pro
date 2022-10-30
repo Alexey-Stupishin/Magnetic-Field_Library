@@ -73,12 +73,9 @@
 ;--------------------------------------------------------------------------;
 ;
 ;-------------------------------------------------------------------------------------------------
-function gx_box_make_nlfff_wwas_field, dll_location, box, version_info = version_info, _extra = _extra
+function gx_box_make_nlfff_wwas_field, lib_location, box, version_info = version_info, _extra = _extra
 
-  b = bytarr(512)
-  b(*) = 32B
-  version_info = STRING(b)
-  returnCode = CALL_EXTERNAL(dll_location, 'mfoNLFFFVersion', version_info)
+  version_info = gx_box_field_library_version(lib_location)
 ;    print, version_info
   
   abs_field = 0L
@@ -217,7 +214,7 @@ function gx_box_make_nlfff_wwas_field, dll_location, box, version_info = version
 
   sz = size(bx)
  ; returnCode = 0
-  returnCode = CALL_EXTERNAL(dll_location, 'mfoNLFFF', parameterMap, sz[1:3], bx, by, bz, $
+  returnCode = CALL_EXTERNAL(lib_location, 'mfoNLFFF', parameterMap, sz[1:3], bx, by, bz, $
               abs_field, abs_field_weight, $
               los_projection, los_projection_weight, los_projection_dir_cos, $
               field_component_x, field_component_x_weight, $

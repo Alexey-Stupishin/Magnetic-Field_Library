@@ -7,7 +7,7 @@
 ; 
 ; Call (see parameters and comments below):
 ; non_stored = gx_box_calculate_lines( $
-;                          dll_location, box $ ; Required
+;                          lib_location, box $ ; Required
 ;                        , inputSeeds = <array>, maxLength = <number> $ ; Optional input
 ;                        , reduce_passed = <number>, n_processes = <number>, chromo_level = <number>, line_step = <number> $ ; Optional input  
 ;                        , inputSeeds = <array>, maxLength = <number> $ ; Optional input
@@ -23,7 +23,7 @@
 ; Parameters description (see also section Comments below):
 ; 
 ; Parameters required:
-;   (in)      dll_location   (string)       full path to calling DLL
+;   (in)      lib_location   (string)       full path to calling library
 ;   (in)      box            (structure)    GX-simulator box with fields bx, by, bz
 ;   
 ; Parameters optional (in):
@@ -149,7 +149,7 @@ end
 
 ;------------------------------------------------------------------------------------------
 function gx_box_calculate_lines $
-    , dll_location, box $ ; Required
+    , lib_location, box $ ; Required
     , inputSeeds = inputSeeds, maxLength = maxLength $ ; Optional input
     , _extra = _extra $ ; Optional input
     , status = status, physLength = physLength, avField = avField $ ; Optional output
@@ -159,10 +159,7 @@ function gx_box_calculate_lines $
     , codes = codes $ ; Optional output
     , version_info = version_info ; Optional output
 
-    b = bytarr(512)
-    b(*) = 32B
-    version_info = STRING(b)
-    returnCode = CALL_EXTERNAL(dll_location, 'mfoNLFFFVersion', version_info)
+    version_info = gx_box_field_library_version(lib_location)
 ;    print, version_info
   
     value = bytarr(23)
@@ -245,7 +242,7 @@ function gx_box_calculate_lines $
     sz = size(bx)
     s3D = sz[1:3]
   
-    non_stored = CALL_EXTERNAL(dll_location, 'mfoLines', parameterMap $                 ; 0
+    non_stored = CALL_EXTERNAL(lib_location, 'mfoLines', parameterMap $                 ; 0
                           , s3D, bx, by, bz $                                           ; 1-4
                           , vstatus, vphysLength, vavField $                            ; 5-7
                           , vstartIdx, vendIdx, vapexIdx, vseedIdx $                    ; 8-11
