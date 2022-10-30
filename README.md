@@ -7,7 +7,7 @@ See [Licence](https://github.com/Alexey-Stupishin/Magnetic-Field_Library/blob/ma
 The repository contains:
 * sources of Magnetic Field Library (C++11)
 * Windows .dll and Linux .so libraries
-* project for build under Windows and Linux
+* projects for build under Windows and Linux
 * wrappers for IDL calls
 
 ## Dependencies
@@ -23,7 +23,7 @@ To rebild the project it is necessry to clone [common](https://github.com/Alexey
 * _/idl/gx_box_field_library_version.pro_ - IDL wrapper to get
 * _/sources_ - source codes (C++11)
 * _/Windows_ - MSVC project for Windows
-* _/Linux_ - makefile for Linux
+* _/Linux_ - makefile (g++) for Linux
 
 For NLFFF Weghted method please refer to:
 Wiegelmann, T. Optimization code with weighting function for the reconstruction of coronal magnetic fields. _Solar Phys_., 2004, __219__, 87–108. ([doi:10.1023/B:SOLA.0000021799.39465.36](https://link.springer.com/article/10.1023/B:SOLA.0000021799.39465.36), [ADS:2004SoPh..219...87W](https://ui.adsabs.harvard.edu/abs/2004SoPh..219...87W/abstract), [arXiv:0802.0124](https://arxiv.org/abs/0802.0124))
@@ -49,9 +49,10 @@ Fleishman, G., Anfinogentov, Stupishin, A., Kuznetsov, A., Nita, G. Coronal Heat
 	* improvement (all lines calculated, even if seed below chromo_level); but only part above chromo_level is stored
 	* comment in _gx_box_calculate_lines.pro_ utility corrected, so that is less confusing
 * 16 October 2022 (v 2.4.22.1016, rev.625):
-	* Significant code reorganization 
-	* Linux version started 
 	* small bug for short low loops fixed
 	* small lines wrapper correction
+	* Linux version started (at separate repository)
 * 30 October 2022 (v 3.4.22.1025, rev.626): 
 	* Major structure changes 
+	* Significant code reorganization for multiplatforming, change implementation to C++11 standard
+	* Linux version built
