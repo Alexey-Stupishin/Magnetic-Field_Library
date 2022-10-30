@@ -2,14 +2,15 @@
 
 [Refer to the latest stable release: doi:10.5281/zenodo.3896222](https://zenodo.org/record/3896223#.Y13LRHZBxJQ)
 
-The repository contains:
-	* sources of Magnetic Field Library (C++11)
-	* Windows .dll and Linux .so libraries
-	* project for build under Windows and Linux
-	* wrappers for IDL calls
+The repository 
+* sources of Magnetic Field Library (C++11)
+* Windows .dll and Linux .so libraries
+* project for build under Windows and Linux
+* wrappers for IDL calls
 
 ## Dependencies
 All routines are designed to be used in _gxbox_ subpackage of [GX-simulator](https://github.com/Gelu-Nita/GX_SIMULATOR) package, which includes in [Solar Soft](http://www.lmsal.com/solarsoft/sswdoc/sswdoc_jtop.html) environment.
+
 To rebild the project it is necessry to clone [common](https://github.com/Alexey-Stupishin/Common) repository and placed it at the same directory tree level as Magnetic Field Library.
 
 ## Routines
@@ -23,10 +24,12 @@ To rebild the project it is necessry to clone [common](https://github.com/Alexey
 * _/Linux_ - makefile for Linux
 
 For NLFFF Weghted method refer to:
-Wiegelmann, T. (2004). Optimization code with weighting function for the reconstruction of coronal magnetic fields.
-Solar Phys. 219, 87–108. 
+Wiegelmann, T. (2004). Optimization code with weighting function for the reconstruction of coronal magnetic fields.Solar Phys. 219, 87–108. 
+
 [doi:10.1023/B:SOLA.0000021799.39465.36](https://link.springer.com/article/10.1023/B:SOLA.0000021799.39465.36)
+
 [ADS:2004SoPh..219...87W](https://ui.adsabs.harvard.edu/abs/2004SoPh..219...87W/abstract)
+
 [arXiv:0802.0124](https://arxiv.org/abs/0802.0124)
 
 ## Update History
