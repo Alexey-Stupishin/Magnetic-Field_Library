@@ -28,7 +28,7 @@ To rebild the project it is necessry to clone [common](https://github.com/Alexey
 For NLFFF Weghted method please refer to:
 Wiegelmann, T. Optimization code with weighting function for the reconstruction of coronal magnetic fields. _Solar Phys_., 2004, __219__, 87–108. ([doi:10.1023/B:SOLA.0000021799.39465.36](https://link.springer.com/article/10.1023/B:SOLA.0000021799.39465.36), [ADS:2004SoPh..219...87W](https://ui.adsabs.harvard.edu/abs/2004SoPh..219...87W/abstract), [arXiv:0802.0124](https://arxiv.org/abs/0802.0124))
 
-Some proofs and using of this library can be found in:
+Some proves and using of this library can be found in:
 
 Fleishman, G., Anfinogentov, S., Loukitcheva, M., Mysh'yakov, I., Stupishin, A. Casting the Coronal Magnetic Field Reconstruction Tools in 3D Using the MHD Bifrost Model. _ApJ_, 2017, __839__, 30 ([doi:10.3847/1538-4357/aa6840](https://iopscience.iop.org/article/10.3847/1538-4357/aa6840), [ADS:2017ApJ...839...30F](https://ui.adsabs.harvard.edu/abs/2017ApJ...839...30F/abstract), [arXiv:1703.06360](https://arxiv.org/abs/1703.06360))
 
