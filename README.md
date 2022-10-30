@@ -30,8 +30,14 @@ Wiegelmann, T. Optimization code with weighting function for the reconstruction 
 
 Some proofs and using of this library can be found in:
 
-Fleishman, G., Anfinogentov, S., Loukitcheva, M., Mysh'yakov, I., Stupishin, A. Casting the Coronal Magnetic Field Reconstruction Tools in 3D Using the MHD Bifrost Model. ApJ, 2017, __839__, 30 ([doi:10.3847/1538-4357/aa6840](https://iopscience.iop.org/article/10.3847/1538-4357/aa6840), [ADS:2017ApJ...839...30F](https://ui.adsabs.harvard.edu/abs/2017ApJ...839...30F/abstract), [arXiv:1703.06360](https://arxiv.org/abs/1703.06360))
-Anfinogentov, S., Stupishin, A., Mysh’yakov, I., Fleishman, G. Record-breaking Coronal Magnetic Field in Solar Active Region 12673. ApJL, 2019, __880__, L29 ([doi:10.3847/2041-8213/ab3042](https://iopscience.iop.org/article/10.3847/2041-8213/ab3042), [ADS:2019ApJ...880L..29A](https://ui.adsabs.harvard.edu/abs/2019ApJ...880L..29A/abstract), [arXiv:1907.06398](https://arxiv.org/abs/1907.06398))
+Fleishman, G., Anfinogentov, S., Loukitcheva, M., Mysh'yakov, I., Stupishin, A. Casting the Coronal Magnetic Field Reconstruction Tools in 3D Using the MHD Bifrost Model. _ApJ_, 2017, __839__, 30 ([doi:10.3847/1538-4357/aa6840](https://iopscience.iop.org/article/10.3847/1538-4357/aa6840), [ADS:2017ApJ...839...30F](https://ui.adsabs.harvard.edu/abs/2017ApJ...839...30F/abstract), [arXiv:1703.06360](https://arxiv.org/abs/1703.06360))
+
+Stupishin, A., Kaltman, T., Bogod, V., Yasnov, L. Modeling of Solar Atmosphere Parameters Above Sunspots Using RATAN-600 Microwave Observations. _Solar Phys_, 2018, __293__, 13 (doi:10.1007/s11207-017-1228-7](https://link.springer.com/article/10.1007/s11207-017-1228-7), [ADS:2018SoPh..293...13S](https://ui.adsabs.harvard.edu/abs/2018SoPh..293...13S/abstract))
+
+Anfinogentov, S., Stupishin, A., Mysh’yakov, I., Fleishman, G. Record-breaking Coronal Magnetic Field in Solar Active Region 12673. _ApJL_, 2019, __880__, L29 ([doi:10.3847/2041-8213/ab3042](https://iopscience.iop.org/article/10.3847/2041-8213/ab3042), [ADS:2019ApJ...880L..29A](https://ui.adsabs.harvard.edu/abs/2019ApJ...880L..29A/abstract), [arXiv:1907.06398](https://arxiv.org/abs/1907.06398))
+
+[//] [doi:xxx](), [ADS:](https://ui.adsabs.harvard.edu/abs/xxx), [arXiv:xxx](https://arxiv.org/abs/xxx)
+
 
 ## Update History
 * 16 June 2020 - 1st release (v 2.1.20.428), [doi:10.5281/zenodo.3896222](https://zenodo.org/record/3896223#.Y13LRHZBxJQ)
