@@ -2,7 +2,7 @@
 
 See [Licence](https://github.com/Alexey-Stupishin/Magnetic-Field_Library/blob/master/LICENCE.md)
 
-[Refer to the latest stable release (v 2.1.20.428): doi:10.5281/zenodo.3896222](https://zenodo.org/record/3896223#.Y13LRHZBxJQ)
+[Latest stable release (v 2.1.20.428): doi:10.5281/zenodo.3896222](https://zenodo.org/record/3896223#.Y13LRHZBxJQ)
 
 The repository contains:
 * sources of Magnetic Field Library (C++11)
