@@ -11,24 +11,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Common\BaseMath\agmBaseMath.h" />
-    <ClInclude Include="..\..\Common\BaseMath\agmMetrics.h" />
-    <ClInclude Include="..\..\Common\BaseMath\agmRKF45.h" />
-    <ClInclude Include="..\..\Common\BaseMath\agmRotate3D.h" />
-    <ClInclude Include="..\..\Common\BaseMath\agmScalarField.h" />
-    <ClInclude Include="..\..\Common\BaseMath\agmScalarFieldOps.h" />
-    <ClInclude Include="..\..\Common\BaseMath\agmVectorField.h" />
-    <ClInclude Include="..\..\Common\BaseMath\agmVectorFieldLineFuncs.h" />
-    <ClInclude Include="..\..\Common\BaseMath\agmVectorFieldOps.h" />
-    <ClInclude Include="..\..\Common\BaseMath\agsFieldsCommon.h" />
-    <ClInclude Include="..\..\Common\BasePhysics\agpWiegelmann.h" />
-    <ClInclude Include="..\..\Common\General\stdDefinitions.h" />
-    <ClInclude Include="..\..\Common\IDL\idl_export.h" />
-    <ClInclude Include="..\..\Common\IDL\idl_export_ext.h" />
-    <ClInclude Include="..\..\Common\Multithread\TaskQueueProcessor.h" />
-    <ClInclude Include="..\..\Common\Utils\binUtilities.h" />
-    <ClInclude Include="..\..\Common\Utils\string_ex.h" />
-    <ClInclude Include="..\MagFieldOps.h" />
+    <ClInclude Include="..\common\BaseMath\agmBaseMath.h" />
+    <ClInclude Include="..\common\BaseMath\agmMetrics.h" />
+    <ClInclude Include="..\common\BaseMath\agmRKF45.h" />
+    <ClInclude Include="..\common\BaseMath\agmRotate3D.h" />
+    <ClInclude Include="..\common\BaseMath\agmScalarField.h" />
+    <ClInclude Include="..\common\BaseMath\agmScalarFieldOps.h" />
+    <ClInclude Include="..\common\BaseMath\agmVectorField.h" />
+    <ClInclude Include="..\common\BaseMath\agmVectorFieldLineFuncs.h" />
+    <ClInclude Include="..\common\BaseMath\agmVectorFieldOps.h" />
+    <ClInclude Include="..\common\BaseMath\agsFieldsCommon.h" />
+    <ClInclude Include="..\common\BasePhysics\agpWiegelmann.h" />
+    <ClInclude Include="..\common\General\stdDefinitions.h" />
+    <ClInclude Include="..\common\IDL\idl_export.h" />
+    <ClInclude Include="..\common\IDL\idl_export_ext.h" />
+    <ClInclude Include="..\common\Multithread\TaskQueueProcessor.h" />
+    <ClInclude Include="..\common\Utils\binUtilities.h" />
+    <ClInclude Include="..\common\Utils\console_debug.h" />
+    <ClInclude Include="..\common\Utils\string_ex.h" />
     <ClInclude Include="..\sources\LinesProcessor.h" />
     <ClInclude Include="..\sources\LinesTaskProcessor11.h" />
     <ClInclude Include="..\sources\LinesTaskQueue.h" />
@@ -44,17 +44,17 @@
     <ClInclude Include="VersionWin.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Common\BaseMath\agmRKF45.cpp" />
-    <ClCompile Include="..\..\Common\BaseMath\agmScalarField.cpp" />
-    <ClCompile Include="..\..\Common\BaseMath\agmScalarFieldOps.cpp" />
-    <ClCompile Include="..\..\Common\BaseMath\agmVectorField.cpp" />
-    <ClCompile Include="..\..\Common\BaseMath\agmVectorFieldOps.cpp" />
-    <ClCompile Include="..\..\Common\BaseMath\agmVectorFieldOpsLine.cpp" />
-    <ClCompile Include="..\..\Common\BasePhysics\agpWiegelmann.cpp" />
-    <ClCompile Include="..\..\Common\Multithread\TaskQueueProcessor.cpp" />
-    <ClCompile Include="..\..\Common\Utils\binUtilities.cpp" />
-    <ClCompile Include="..\..\Common\Utils\console_debug.cpp" />
-    <ClCompile Include="..\..\Common\Utils\string_ex.cpp" />
+    <ClCompile Include="..\common\BaseMath\agmRKF45.cpp" />
+    <ClCompile Include="..\common\BaseMath\agmScalarField.cpp" />
+    <ClCompile Include="..\common\BaseMath\agmScalarFieldOps.cpp" />
+    <ClCompile Include="..\common\BaseMath\agmVectorField.cpp" />
+    <ClCompile Include="..\common\BaseMath\agmVectorFieldOps.cpp" />
+    <ClCompile Include="..\common\BaseMath\agmVectorFieldOpsLine.cpp" />
+    <ClCompile Include="..\common\BasePhysics\agpWiegelmann.cpp" />
+    <ClCompile Include="..\common\Multithread\TaskQueueProcessor.cpp" />
+    <ClCompile Include="..\common\Utils\binUtilities.cpp" />
+    <ClCompile Include="..\common\Utils\console_debug.cpp" />
+    <ClCompile Include="..\common\Utils\string_ex.cpp" />
     <ClCompile Include="..\sources\LinesProcessor.cpp" />
     <ClCompile Include="..\sources\MagFieldOps.cpp" />
     <ClCompile Include="..\sources\mfoGetLine.cpp" />
@@ -114,7 +114,7 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>DEBUG_CPP11THREAD_NON;_DEBUG_TRACE_NON;_DEBUG_TRACE2_NON;USE_UNIT_TEST;_MSVC_BUILD_NO;WIN32;_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\;..\sources;..\..\Common\BaseMath;..\..\Common\BasePhysics;..\..\Common\General;..\..\Common\IDL;..\..\Common\Multithread;..\..\Common\Utils</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\sources;..\common\BaseMath;..\common\BasePhysics;..\common\General;..\common\IDL;..\common\Multithread;..\common\Utils</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -142,7 +142,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_MSVC_BUILD;WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\;..\sources;..\..\Common\BaseMath;..\..\Common\BasePhysics;..\..\Common\General;..\..\Common\IDL;..\..\Common\Multithread;..\..\Common\Utils</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\sources;..\common\BaseMath;..\common\BasePhysics;..\common\General;..\common\IDL;..\common\Multithread;..\common\Utils</AdditionalIncludeDirectories>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
