@@ -1,15 +1,15 @@
 ;
 ; IDL Wrapper to external call of Weighted Wiegelmann NLFF Field Reconstruction Method library
 ; v 2.3.21.217 (rev.392)
-; min WWWNLFFFReconstruction.dll version: v 2.3.21.217 (rev.392)
+; min WWWNLFFFReconstruction version: v 2.3.21.217 (rev.392)
 ; 
 ; Call:
-; rc = gx_box_make_nlfff_wwas_field(dll_location, box, _extra = _extra)
+; rc = gx_box_make_nlfff_wwas_field(lib_location, box, _extra = _extra)
 ; 
 ; Parameters description (see also section Comments below):
 ; 
 ; Parameters required:
-;   (in)      dll_location    - full path to calling DLL
+;   (in)      lib_location    - full path to calling library
 ;   (in/out)  box             - GX-simulator box with initial model of field bx, by, bz
 ;   
 ; Parameters optional (in):
@@ -62,7 +62,7 @@
 ;        
 ;   Note, that wrapping library also provides interfaces for C/C++ and MATLAB
 ;   
-; (c) Alexey G. Stupishin, Saint Petersburg State University, Saint Petersburg, Russia, 2017-2018
+; (c) Alexey G. Stupishin, Saint Petersburg State University, Saint Petersburg, Russia, 2017-2022
 ;     mailto:agstup@yandex.ru
 ;
 ;

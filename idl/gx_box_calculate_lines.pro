@@ -3,7 +3,7 @@
 ;   using Weighted Wiegelmann NLFF Field Reconstruction library
 ;   
 ; v 2.3.21.217 (rev.392)
-; min WWWNLFFFReconstruction.dll version: v 2.3.21.217 (rev.392)
+; min WWWNLFFFReconstruction version: v 2.3.21.217 (rev.392)
 ; 
 ; Call (see parameters and comments below):
 ; non_stored = gx_box_calculate_lines( $
@@ -98,7 +98,7 @@
 ;    
 ;   Note, that wrapping library also provides interfaces for C/C++ and MATLAB
 ;   
-; (c) Alexey G. Stupishin, Saint Petersburg State University, Saint Petersburg, Russia, 2017-2021
+; (c) Alexey G. Stupishin, Saint Petersburg State University, Saint Petersburg, Russia, 2017-2022
 ;     mailto:agstup@yandex.ru
 ;
 ;--------------------------------------------------------------------------;

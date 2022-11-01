@@ -24,7 +24,7 @@ This repository contains submodule [common](https://github.com/Alexey-Stupishin/
 * _/idl/gx_box_make_nlfff_wwas_field.pro_ - IDL wrapper to reconstruct non-linear force-free magnetic field (NLFFF) by T.Wiegelmann (weighted) method
 * _/idl/gx_box_field_library_version.pro_ - IDL wrapper to get library version info
 * _/sources_ - source codes (C++11)
-* _/Windows_ - MSVC project for Windows
+* _/Windows_ - MSVC project for Windows (Visual Studio 2015)
 * _/Linux_ - makefile (g++) for Linux
 
 For NLFFF Weghted method please refer to:
