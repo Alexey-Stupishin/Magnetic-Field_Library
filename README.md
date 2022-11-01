@@ -13,14 +13,16 @@ The repository contains:
 ## Dependencies
 IDL wrappers are designed to be used as subpackage of [GX-simulator](https://github.com/Gelu-Nita/GX_SIMULATOR) package, which included in [Solar Soft](http://www.lmsal.com/solarsoft/sswdoc/sswdoc_jtop.html) environment.
 
-To rebild the project it is necessry to clone [common](https://github.com/Alexey-Stupishin/Common) repository and placed it at the same directory tree level as Magnetic Field Library.
+This repository contains submodule [common](https://github.com/Alexey-Stupishin/Common). Working with submodules can be found [here](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
 
 ## Routines
 * _/binaries/WWNLFFFReconstruction.dll_ - Calculation library for Windows
-* _/binaries/WWNLFFFReconstruction.so_ - Calculation library for Linux
+* _/binaries/WWNLFFFReconstruction.so_ - Calculation library for Linux (tested at Ubuntu 20.04.4 LTS, Linux 5.4.0-121-generic, x86-64)
+* _/binaries/WWNLFFFReconstruction_x86-64.so_ - Calculation library for Linux (x86-64)
+* _/binaries/WWNLFFFReconstruction_arm64.so_ - Calculation library for Linux (arm64)
 * _/idl/gx_box_calculate_lines.pro_ - IDL wrapper to calculate megnetic field lines
 * _/idl/gx_box_make_nlfff_wwas_field.pro_ - IDL wrapper to reconstruct non-linear force-free magnetic field (NLFFF) by T.Wiegelmann (weighted) method
-* _/idl/gx_box_field_library_version.pro_ - IDL wrapper to get
+* _/idl/gx_box_field_library_version.pro_ - IDL wrapper to get library version info
 * _/sources_ - source codes (C++11)
 * _/Windows_ - MSVC project for Windows
 * _/Linux_ - makefile (g++) for Linux
