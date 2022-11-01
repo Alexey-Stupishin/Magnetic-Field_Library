@@ -2,7 +2,7 @@
 
 See [Licence](https://github.com/Alexey-Stupishin/Magnetic-Field_Library/blob/master/LICENCE.md)
 
-[Latest stable release (v 2.1.20.428): doi:10.5281/zenodo.3896222](https://zenodo.org/record/3896223#.Y13LRHZBxJQ)
+[doi:10.5281/zenodo.3896222](https://zenodo.org/record/3896222)
 
 The repository contains:
 * sources of Magnetic Field Library (C++11)
@@ -43,7 +43,7 @@ Fleishman, G., Mysh’yakov, I., Stupishin, A., Loukitcheva, M., Anfinogentov, S. 
 Fleishman, G., Anfinogentov, Stupishin, A., Kuznetsov, A., Nita, G. Coronal Heating Law Constrained by Microwave Gyroresonant Emission. _ApJ_, 2021, __909__, 89 ([doi:10.3847/1538-4357/abdab](https://iopscience.iop.org/article/10.3847/1538-4357/abdab1), [ADS:2021ApJ...909...89F](https://ui.adsabs.harvard.edu/abs/2021ApJ...909...89F/abstract), [arXiv:2101.03651](https://arxiv.org/abs/2101.03651))
 
 ## Update History
-* 16 June 2020 - 1st release (v 2.1.20.428), [doi:10.5281/zenodo.3896222](https://zenodo.org/record/3896223#.Y13LRHZBxJQ)
+* 16 June 2020 - 1st release (v 2.1.20.428), [doi:10.5281/zenodo.3896223](https://zenodo.org/record/3896223#.Y13LRHZBxJQ)
 * 04 October 2020 (v 2.1.20.1004, rev.363): _weight_bound_size_ key added to _gx_box_make_nlfff_wwas_field.pro_, see comment inside
 * 25 January 2021 (v 2.2.21.125, rev.384): bug fixed (_extra parameters could prevent NLFFF in some cases)
 * 18 February 2021 (v 2.3.21.217, rev.392):
