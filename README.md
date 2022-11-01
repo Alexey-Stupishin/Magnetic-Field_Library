@@ -20,9 +20,9 @@ This repository contains submodule [common](https://github.com/Alexey-Stupishin/
 * _/binaries/WWNLFFFReconstruction.so_ - Calculation library for Linux (tested at Ubuntu 20.04.4 LTS, Linux 5.4.0-121-generic, x86-64)
 * _/binaries/WWNLFFFReconstruction_x86-64.so_ - Calculation library for Linux (x86-64)
 * _/binaries/WWNLFFFReconstruction_arm64.so_ - Calculation library for Linux (arm64)
-* _/idl/gx_box_calculate_lines.pro_ - IDL wrapper to calculate megnetic field lines
-* _/idl/gx_box_make_nlfff_wwas_field.pro_ - IDL wrapper to reconstruct non-linear force-free magnetic field (NLFFF) by T.Wiegelmann (weighted) method
-* _/idl/gx_box_field_library_version.pro_ - IDL wrapper to get library version info
+* _/idl/gx_box_calculate_lines.pro_ - IDL wrapper to calculate megnetic field lines (see comments in the function)
+* _/idl/gx_box_make_nlfff_wwas_field.pro_ - IDL wrapper to reconstruct non-linear force-free magnetic field (NLFFF) by T.Wiegelmann (weighted) method  (see comments in the function)
+* _/idl/gx_box_field_library_version.pro_ - IDL wrapper to get library version info  (see comments in the function)
 * _/sources_ - source codes (C++11)
 * _/Windows_ - MSVC project for Windows (Visual Studio 2015)
 * _/Linux_ - makefile (g++) for Linux
