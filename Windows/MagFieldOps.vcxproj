@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Common\BaseMath\agmLanczos.cpp" />
     <ClCompile Include="..\..\Common\BaseMath\agmRKF45.cpp" />
     <ClCompile Include="..\..\Common\BaseMath\agmScalarField.cpp" />
     <ClCompile Include="..\..\Common\BaseMath\agmScalarFieldOps.cpp" />

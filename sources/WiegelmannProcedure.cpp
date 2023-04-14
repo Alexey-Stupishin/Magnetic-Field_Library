@@ -120,6 +120,10 @@ uint32_t mfoWiegelmannProcedureCore(CagmVectorField *field, CagmScalarField *wei
 
     int stepN = 0;
     int stop = 0;
+    int init_field = 10;
+
+    if (callback)
+        callback(0, d, nChunks, nTasks, depth, 0, metrics, field, &init_field);
 
     proc->Step();
     int iterN = 1;
