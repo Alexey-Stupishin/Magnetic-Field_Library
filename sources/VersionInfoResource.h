@@ -6,10 +6,10 @@
 //-------------------------------------------------------------------------
 #define VIR_Ver1 3
 #define VIR_Ver2 4
-#define VIR_Ver3 22
-#define VIR_Ver4 1025
-#define VIR_Revision 626
-#define VIR_Year 2022
+#define VIR_Ver3 23
+#define VIR_Ver4 823
+#define VIR_Revision 745
+#define VIR_Year 2023
 
 //-------------------------------------------------------------------------
 #define VIR_CompanyName "St. Petersburg State University, Russia"

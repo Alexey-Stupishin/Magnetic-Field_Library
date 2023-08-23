@@ -9,6 +9,7 @@ The repository contains:
 * Windows .dll and Linux .so libraries
 * projects for build under Windows and Linux
 * wrappers for IDL calls
+* wrappers for Python calls
 
 ## Dependencies
 IDL wrappers are designed to be used as subpackage of [GX-simulator](https://github.com/Gelu-Nita/GX_SIMULATOR) package, which included in [Solar Soft](http://www.lmsal.com/solarsoft/sswdoc/sswdoc_jtop.html) environment.
@@ -20,9 +21,10 @@ This repository contains submodule [common](https://github.com/Alexey-Stupishin/
 * _/binaries/WWNLFFFReconstruction.so_ - Calculation library for Linux (tested at Ubuntu 20.04.4 LTS, Linux 5.4.0-121-generic, x86-64)
 * _/binaries/WWNLFFFReconstruction_x86-64.so_ - Calculation library for Linux (Mac Intel chip, x86-64)
 * _/binaries/WWNLFFFReconstruction_arm64.so_ - Calculation library for Linux (Mac M1 chip, arm64)
-* _/idl/gx_box_calculate_lines.pro_ - IDL wrapper to calculate megnetic field lines (see comments in the function)
+* _/idl/gx_box_calculate_lines.pro_ - IDL wrapper to calculate magnetic field lines (see comments in the function)
 * _/idl/gx_box_make_nlfff_wwas_field.pro_ - IDL wrapper to reconstruct non-linear force-free magnetic field (NLFFF) by T.Wiegelmann (weighted) method  (see comments in the function)
 * _/idl/gx_box_field_library_version.pro_ - IDL wrapper to get library version info  (see comments in the function)
+* _/python/ASMagLibPy/MagFieldWrapper.py_ - Python class wrapper to WWNLFFF library functions
 * _/sources_ - source codes (C++11)
 * _/Windows_ - MSVC project for Windows (Visual Studio 2015)
 * _/Linux_ - makefile (g++) for Linux
@@ -42,8 +44,10 @@ Fleishman, G., Mysh’yakov, I., Stupishin, A., Loukitcheva, M., Anfinogentov, S. 
 
 Fleishman, G., Anfinogentov, Stupishin, A., Kuznetsov, A., Nita, G. Coronal Heating Law Constrained by Microwave Gyroresonant Emission. _ApJ_, 2021, __909__, 89 ([doi:10.3847/1538-4357/abdab](https://iopscience.iop.org/article/10.3847/1538-4357/abdab1), [ADS:2021ApJ...909...89F](https://ui.adsabs.harvard.edu/abs/2021ApJ...909...89F/abstract), [arXiv:2101.03651](https://arxiv.org/abs/2101.03651))
 
+Gelu M. Nita, Gregory D. Fleishman, Alexey A. Kuznetsov, Sergey A. Anfinogentov, Alexey G. Stupishin, Eduard P. Kontar, Samuel J. Schonfeld, James A. Klimchuk, and Dale E. Gary. Data-constrained Solar Modeling with GX Simulator. _ApJSS_, 2023, __267__, 6 ([doi:10.3847/1538-4365/acd343](https://link.springer.com/article/10.1023/B:SOLA.0000021799.39465.36), [ADS:2023ApJS..267....6N](https://ui.adsabs.harvard.edu/abs/2023ApJS..267....6N/abstract), [arXiv:2301.00795](https://arxiv.org/abs/2301.00795))
+
 ## Update History
-* 16 June 2020 - 1st release (v 2.1.20.428), [doi:10.5281/zenodo.3896223](https://zenodo.org/record/3896223#.Y13LRHZBxJQ)
+* 16 June 2020 - 1<sup>st</sup> release (v 2.1.20.428), [doi:10.5281/zenodo.3896223](https://zenodo.org/record/3896223#.Y13LRHZBxJQ)
 * 04 October 2020 (v 2.1.20.1004, rev.363): _weight_bound_size_ key added to _gx_box_make_nlfff_wwas_field.pro_, see comment inside
 * 25 January 2021 (v 2.2.21.125, rev.384): bug fixed (_extra parameters could prevent NLFFF in some cases)
 * 18 February 2021 (v 2.3.21.217, rev.392):
@@ -58,3 +62,6 @@ Fleishman, G., Anfinogentov, Stupishin, A., Kuznetsov, A., Nita, G. Coronal Heat
 	* Major structure changes 
 	* Significant code reorganization for multiplatforming, change implementation to C++11 standard
 	* Linux version built
+* 23 August 2023 (v 3.4.23.745, rev.725): 
+	* Small polishing, version changed
+	* Python wrapper

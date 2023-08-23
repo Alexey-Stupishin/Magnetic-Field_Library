@@ -100,4 +100,6 @@ __declspec( dllexport ) int mfoNLFFF(int argc, void* argv[]);
 __declspec( dllexport ) int mfoLines(int argc, void* argv[]);
 __declspec( dllexport ) int mfoNLFFFVersion(int argc, void* argv[]);
 
+// Python interface
+__declspec(dllexport) uint32_t mfoNLFFFCore(int *N, double *Bx, double *By, double *Bz, double w_bound);
 }

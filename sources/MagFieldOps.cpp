@@ -105,7 +105,7 @@ void _proceedGlobals(bool bGet)
     mapIntproceed   (bGet, "dense_grid_min_n", WiegelmannMatryoshkaDeepMinN, 25);
     mapDoubleproceed(bGet, "dense_grid_factor", WiegelmannMatryoshkaFactor, 2.0);
     int iWiegelmannMatryoshkaInterpolator;
-    mapIntproceed(bGet, "dense_grid_interpolator", iWiegelmannMatryoshkaInterpolator, 0);
+    mapIntproceed   (bGet, "dense_grid_interpolator", iWiegelmannMatryoshkaInterpolator, 0);
     mapDoubleproceed(bGet, "dense_grid_interpolator_p1", WiegelmannMatryoshkaInterpolatorP1, 2.0);
     mapDoubleproceed(bGet, "dense_grid_interpolator_p2", WiegelmannMatryoshkaInterpolatorP2, 8.0);
     mapDoubleproceed(bGet, "dense_grid_interpolator_p3", WiegelmannMatryoshkaInterpolatorP3, 0.0);
@@ -123,7 +123,7 @@ void _proceedGlobals(bool bGet)
     mapIntproceed   (bGet, "chunk_size_opt", WiegelmannChunkSizeOpt, 30);
     mapIntproceed   (bGet, "chunk_tasks", WiegelmannChunkTasks, 0);
     //mapIntproceed   (bGet, "threads_priority", WiegelmannThreadPriority, THREAD_PRIORITY_LOWEST);
-    mapIntproceed(bGet, "threads_priority", WiegelmannThreadPriority, 0);
+    mapIntproceed   (bGet, "threads_priority", WiegelmannThreadPriority, 0);
 
     mapIntproceed   (bGet, "metrics_theta", WiegelmannGetMetricsTheta, 0);
     mapIntproceed   (bGet, "metrics_diff_init", WiegelmannGetMetricsDiffInit, 0);
