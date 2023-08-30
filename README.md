@@ -62,6 +62,7 @@ Gelu M. Nita, Gregory D. Fleishman, Alexey A. Kuznetsov, Sergey A. Anfinogentov,
 	* Major structure changes 
 	* Significant code reorganization for multiplatforming, change implementation to C++11 standard
 	* Linux version built
-* 23 August 2023 (v 3.4.23.745, rev.725): 
-	* Small polishing, version changed
+* 23 August 2023
 	* Python wrapper
+* 30 August 2023 (v 3.4.23.745, rev.725): 
+	* Small polishing, version changed
