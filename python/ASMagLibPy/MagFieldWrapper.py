@@ -1,5 +1,6 @@
 import ctypes
 import numpy as np
+from numpy import linalg as LA
 from scipy.io import readsav
 import os
 import sys
@@ -156,7 +157,7 @@ class MagFieldWrapper:
              ):
 
         # assert box is None
-        line_length_est = np.ceil(np.sqrt(sum(list(map(lambda _: _**2, self.__bx.shape))))).astype(np.int32)
+        line_length_est = LA.norm(self.__bx.shape)
 
         seeds_type = self.__mvoid
         if seeds is None:
@@ -175,7 +176,7 @@ class MagFieldWrapper:
                 reduce_passed = self.PASSED_NONE
 
         if max_length is None:
-            max_length = line_length_est*n_total
+            max_length = np.ceil(line_length_est*n_total).astype(np.int32)
         # assert max_length*4 too large
 
         n_lines = np.array([0], dtype = np.int32)
@@ -208,7 +209,7 @@ class MagFieldWrapper:
                              , self.__mp64, self.__mpint1, self.__mpint1             #   26-28 uint64_t *_linesStart = nullptr, int *_linesIndex = nullptr, int *seedIdx = nullptr);
                               ]
 
-        ns = lines_func(self.__N, self.__bx, self.__by, self.__bz
+        non_passed = lines_func(self.__N, self.__bx, self.__by, self.__bz
                       , reduce_passed, chromo_level 
                       , seeds, n_seeds
                       , n_processes, step, tolerance, tolerance_bound
@@ -220,8 +221,9 @@ class MagFieldWrapper:
                       , lines_start, lines_index, seed_idx
                        )
 
-        return dict(n_lines = n_lines
-                  , n_passed = n_passed
+        return dict(n_lines = n_lines[0]
+                  , n_passed = n_passed[0]
+                  , non_passed = non_passed
                   , voxel_status = voxel_status
                   , phys_length = phys_length
                   , av_field = av_field
@@ -245,17 +247,21 @@ this_path = os.path.dirname(m.__file__)
 
 maglib = MagFieldWrapper(this_path + '../../../binaries/WWNLFFFReconstruction.dll')
 
+print('Load potential cube ...')
 maglib.load_cube(this_path + '/Data/11312_hmi.M_720s.20111010_085818.W120N23CR.CEA.POT.sav')
 energy_pot = maglib.energy
 print('Potential energy: ' + str(energy_pot) + ' erg')
 
+print('Load photoshere bounded cube ...')
 maglib.load_cube(this_path + '/Data/11312_hmi.M_720s.20111010_085818.W120N23CR.CEA.BND.sav')
+print('Calculate NLFFF ...')
 box = maglib.NLFFF()
 energy_new = maglib.energy
 print('NLFFF energy:     ' + str(energy_new) + ' erg')
 
+print('Prepare line seeds ...')
 sz = maglib.get_box_size
-inputSeeds = np.zeros((np.prod(sz), 3), dtype = np.float64, order="C")
+input_seeds = np.zeros((np.prod(sz), 3), dtype = np.float64, order="C")
 
 iz = 1
 porosity = 10
@@ -263,11 +269,13 @@ porosity = 10
 cnt = 0
 for iy in range(0, sz[1], porosity):
     for ix in range(0, sz[0], porosity):
-        inputSeeds[cnt, :] = [ix, iy, iz]
+        input_seeds[cnt, :] = [ix, iy, iz]
         cnt += 1
 
-inputSeeds = inputSeeds[0:cnt, :]
+input_seeds = input_seeds[0:cnt, :]
+print('Prepared ' + str(input_seeds.shape[0]) + ' seeds ...')
 
-lines = maglib.lines(seeds = inputSeeds)
+lines = maglib.lines(seeds = input_seeds)
+print('Passed ' + str(lines['n_passed']) + ', non-passed ' + str(lines['non_passed']))
 
 pass
