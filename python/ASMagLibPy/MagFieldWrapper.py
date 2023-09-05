@@ -2,8 +2,6 @@ import ctypes
 import numpy as np
 from numpy import linalg as LA
 from scipy.io import readsav
-import os
-import sys
 
 class MagFieldWrapper:
     PASSED_NONE   = 0
@@ -240,42 +238,3 @@ class MagFieldWrapper:
                   , seed_idx = seed_idx
                    )        
              # reorder - 2do ?
-
-#-------------------------------------------------------------------------------
-m = sys.modules[__name__]
-this_path = os.path.dirname(m.__file__)
-
-maglib = MagFieldWrapper(this_path + '../../../binaries/WWNLFFFReconstruction.dll')
-
-print('Load potential cube ...')
-maglib.load_cube(this_path + '/Data/11312_hmi.M_720s.20111010_085818.W120N23CR.CEA.POT.sav')
-energy_pot = maglib.energy
-print('Potential energy: ' + str(energy_pot) + ' erg')
-
-print('Load photoshere bounded cube ...')
-maglib.load_cube(this_path + '/Data/11312_hmi.M_720s.20111010_085818.W120N23CR.CEA.BND.sav')
-print('Calculate NLFFF ...')
-box = maglib.NLFFF()
-energy_new = maglib.energy
-print('NLFFF energy:     ' + str(energy_new) + ' erg')
-
-print('Prepare line seeds ...')
-sz = maglib.get_box_size
-input_seeds = np.zeros((np.prod(sz), 3), dtype = np.float64, order="C")
-
-iz = 1
-porosity = 10
-
-cnt = 0
-for iy in range(0, sz[1], porosity):
-    for ix in range(0, sz[0], porosity):
-        input_seeds[cnt, :] = [ix, iy, iz]
-        cnt += 1
-
-input_seeds = input_seeds[0:cnt, :]
-print('Prepared ' + str(input_seeds.shape[0]) + ' seeds ...')
-
-lines = maglib.lines(seeds = input_seeds)
-print('Passed ' + str(lines['n_passed']) + ', non-passed ' + str(lines['non_passed']))
-
-pass
