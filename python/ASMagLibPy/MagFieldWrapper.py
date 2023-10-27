@@ -2,6 +2,8 @@ import ctypes
 import numpy as np
 from numpy import linalg as LA
 from scipy.io import readsav
+import astropy.units as u
+import sunpy.sun.constants as sun
 
 class MagFieldWrapper:
     PASSED_NONE   = 0
@@ -105,7 +107,7 @@ class MagFieldWrapper:
         self.__bz = np.transpose(box['BZ'], (0, 2, 1)).astype(np.float64, order="C")
         Nc = self.__bx.shape
         self.__N = np.array([Nc[2], Nc[1], Nc[0]], dtype = np.int32)
-        self.__step = np.array([box['DR'][2], box['DR'][1], box['DR'][0]], dtype = np.float64) * 6.96e10 # ugly! should be in the constants
+        self.__step = (np.array([box['DR'][2], box['DR'][1], box['DR'][0]], dtype = np.float64) * sun.radius).to(u.cm).value
 
         pass
 
