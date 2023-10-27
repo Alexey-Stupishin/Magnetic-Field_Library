@@ -1,10 +1,11 @@
 #include "stdDefinitions.h"
 #include "MagFieldOps.h"
 #include "mfoGlobals.h"
-#include "WiegelmannProcessor2.h"
+#include "agpWiegelmannPar.h"
 #include "agmRotate3D.h"
 
 #include "console_debug.h"
+#include "debug_data_trace_win.h"
 
 static bool getMetrics(CagmVectorField *init, CagmVectorField *prev, CagmVectorField *B, CagmMetrics *m)
 {
@@ -105,34 +106,27 @@ uint32_t mfoWiegelmannProcedureCore(CagmVectorField *field, CagmScalarField *wei
             WiegelmannProcCondAbs, absField, absWeight, WiegelmannProcCondAbs2, absField2, absWeight2,
             WiegelmannProcCondLOS, losField, losWeight, WiegelmannProcCondLOS2, losField2, losWeight2, &rotator);
 
-    int nChunks, nTasks, nExtension;
-    CWiegelmannProcessor::parallelDefine(N, WiegelmannChunkSizeMax, WiegelmannChunkSizeOpt, WiegelmannChunkTasks, WiegelmannDerivStencil, &nChunks, &nTasks, &nExtension);
-    CWiegelmannProcessor *proc = new CWiegelmannProcessor(N, nChunks, nTasks, nExtension, field->GetSteps());
-    //int nq = proc->GetQueueN();
-    int nq = nChunks;
-    REALTYPE_A *Lt = new REALTYPE_A[nq];
-
-    proc->Bind(field, weight, baseField, baseWeight, baseField2, baseWeight2, 
-               absField, absWeight, absField2, absWeight2, 
-               losField, losWeight, losField2, losWeight2, vcos, vF, Lt);
-
-    int d = proc->GetChuckSize();
+    CagpWiegelmann *proc = new CagpWiegelmann(N, WiegelmannChunkTasks, 3
+        , field, weight
+        , vcos
+        , vF
+        , baseField, baseWeight
+        , absField, absWeight
+        , losField, losWeight
+        );
 
     int stepN = 0;
     int stop = 0;
     int init_field = 10;
 
-    if (callback)
-        callback(0, d, nChunks, nTasks, depth, 0, metrics, field, &init_field);
+    //if (callback)
+    //    callback(0, 0, 0, 0, depth, 0, metrics, field, &init_field);
 
-    proc->Step();
-    int iterN = 1;
+    int iterN = 0;
+    double L0 = proc->step(iterN, depth);
+    iterN++;
 
-    REALTYPE_A L0 = 0;
-    for (k = 0; k < nq; k++)
-        L0 += Lt[k];
-
-    REALTYPE_A L, Lprev = L0;
+    double L, Lprev = L0;
     proceedDL(0.0, 0.0, 0, memoryL, memoryAv);
 
     CagmVectorField *initField = nullptr;
@@ -146,21 +140,27 @@ uint32_t mfoWiegelmannProcedureCore(CagmVectorField *field, CagmScalarField *wei
 
     memcpy(NB, N, 3*sizeof(int));
     NB[2] = 1;
-    CagmVectorField vt(NB);
-    field->getPlane(&vt, PLANE_Z, 0, 0);
 
-    CagmScalarField t(NB);
-    t.abs(&vt);
-    REALTYPE_A Bav = t.avPhys();
+    CagmVectorField *vt = new CagmVectorField(NB);
+    field->getPlane(vt, PLANE_Z, 0, 0);
 
-    vF->getPlane(&vt, PLANE_Z, 0, 0);
-    t.abs(&vt);
-    REALTYPE_A Fmax = t.maxval();
+    CagmScalarField *t = new CagmScalarField(NB);
+    t->abs(vt);
+    REALTYPE_A Bav = t->avPhys();
+
+    vF->getPlane(vt, PLANE_Z, 0, 0);
+    t->abs(vt);
+    REALTYPE_A Fmax = t->maxval();
+
+    delete vt;
+    delete t;
+
     REALTYPE_A step0;
-    if (WiegelmannProcUsePrev > 0)
-        step0 = WiegelmannProcUsePrev;
-    else
-        step0 = Bav/Fmax*WiegelmannProcStep0;
+    //if (WiegelmannProcUsePrev > 0)
+    //    step0 = WiegelmannProcUsePrev;
+    //else
+
+    step0 = Bav/Fmax*WiegelmannProcStep0;
     REALTYPE_A step = step0, dL;
     *maxStep = step0;
 
@@ -176,7 +176,7 @@ uint32_t mfoWiegelmannProcedureCore(CagmVectorField *field, CagmScalarField *wei
                 WiegelmannProcCondAbs, absField, absWeight, WiegelmannProcCondAbs2, absField2, absWeight2,
                 WiegelmannProcCondLOS, losField, losWeight, WiegelmannProcCondLOS2, losField2, losWeight2, &rotator);
 
-        uint32_t rc = proc->Step();
+        L = proc->step(iterN, depth);
         iterN++;
 
         //if (rc == WAIT_TIMEOUT)
@@ -185,9 +185,6 @@ uint32_t mfoWiegelmannProcedureCore(CagmVectorField *field, CagmScalarField *wei
         //    reason = 6;
         //else
         //{
-            L = 0;
-            for (int k = 0; k < nq; k++)
-                L += Lt[k];
 
             dL = Lprev - L;
             if (dL/Lprev <= -WiegelmannProcFunctionalLimit)
@@ -222,7 +219,7 @@ uint32_t mfoWiegelmannProcedureCore(CagmVectorField *field, CagmScalarField *wei
                     reason = 7;
 
                 if (callback && stepN%WiegelmannProtocolStep == 0)
-                    callback(step/step0, d, nChunks, nTasks, depth, dL/L0/step, metrics, field, &stop);
+                    callback(step/step0, 0, 0, 0, depth, dL/L0/step, metrics, field, &stop);
 
                 // theta etc. reasons from 8
             }
@@ -252,15 +249,16 @@ uint32_t mfoWiegelmannProcedureCore(CagmVectorField *field, CagmScalarField *wei
     getMetrics(initField, prevField, field, metrics);
     metrics->setBase(L / L0, step, stepN, depth, iterN);
     if (callback)
-        callback(step/step0, d, nChunks, nTasks, depth, dL/L0, metrics, field, &stop);
+        callback(step/step0, 0, 0, 0, depth, dL/L0, metrics, field, &stop);
 
     delete initField;
     delete prevField;
     delete prevVF;
     delete vF;
     delete proc;
-    delete [] Lt;
     delete [] memoryL;
+    delete [] memoryAv;
+    delete metrics;
 
     return reason;
 }

@@ -11,7 +11,7 @@ protected:
 
 public:
     LQPProcessor(LQPSupervisor *supervisor, int _id, CagmVectorField *_v, int _dir, REALTYPE_A _step, REALTYPE_A _relErr, REALTYPE_A _absErr
-        , REALTYPE_A _boundAchieve, REALTYPE_A _boundAchieveBottom, int _maxLength, int *_passed) : ATQPProcessor(_id)
+        , REALTYPE_A _boundAchieve, REALTYPE_A _boundAchieveBottom, int _maxLength, int *_passed, ATQPSynchonizer *_sync) : ATQPProcessor(_id, _sync)
     {
         w = new CLinesProcessor(supervisor, _id, _v, _dir, _step, _relErr, _absErr
             , _boundAchieve, _boundAchieveBottom, _maxLength, _passed);

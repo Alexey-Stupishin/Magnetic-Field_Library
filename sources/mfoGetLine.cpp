@@ -22,6 +22,7 @@ __declspec(dllexport) uint32_t mfoGetLinesV(int *N,
     uint64_t _maxCoordLength, uint64_t *_totalLength, REALTYPE_A *_coords, uint64_t *_linesStart, int *_linesIndex, int *seedIdx)
 {
     nProc = TaskQueueProcessor::getProcInfo(nProc);
+    TaskQueueProcessor proc(nProc);
 
     uint32_t rc = 0;
 
@@ -36,14 +37,12 @@ __declspec(dllexport) uint32_t mfoGetLinesV(int *N,
         _voxelStatus, _physLength, _avField,
         _linesLength, _codes,
         _startIdx, _endIdx, _apexIdx,
-        _maxCoordLength, _totalLength, _coords, _linesStart, _linesIndex, seedIdx, &factory);
-
-    TaskQueueProcessor proc;
+        _maxCoordLength, _totalLength, _coords, _linesStart, _linesIndex, seedIdx, &factory, proc.get_sync());
 
     std::vector<ATQPProcessor *> processors;
     for (int i = 0; i < nProc; i++)
         processors.push_back(new LQPProcessor(supervisor, i, v, 0, step, tolerance, 0
-            , boundAchieve, chromoLevel, maxResult, _voxelStatus));
+            , boundAchieve, chromoLevel, maxResult, _voxelStatus, proc.get_sync()));
 
     proc.proceed(processors, supervisor);
 

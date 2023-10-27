@@ -14,6 +14,7 @@ protected:
     unsigned long queueID;
 
 public:
+    LQPTask(int _id) : ATQPTask(_id) {}
     void setData(double *_data) { memcpy(data, _data, 3 * sizeof(double)); }
     double *getData() { return data; }
     void setID(unsigned long id) { queueID = id; }
@@ -29,10 +30,7 @@ public:
 
     virtual ATQPTask *create()
     {
-        LQPTask *task = new LQPTask;
-        initialize(task);
-
-        return task;
+        return new LQPTask(counter++);
     }
 };
 
@@ -57,8 +55,8 @@ public:
         int *_linesLength, int *_codes,
         int *_startIdx, int *_endIdx, int *_apexIdx,
         uint64_t _maxCoordLength, uint64_t *_totalLength, REALTYPE_A *_coords, uint64_t *_linesStart, int *_linesIndex, int *seedIdx,
-        LQPTaskFactory *factory)
-        : ATQPSupervisor(0, factory)
+        LQPTaskFactory *factory, ATQPSynchonizer *_sync)
+        : ATQPSupervisor(0, factory, _sync)
     {
         int maxResult = 50000;
 

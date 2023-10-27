@@ -68,3 +68,8 @@ Gelu M. Nita, Gregory D. Fleishman, Alexey A. Kuznetsov, Sergey A. Anfinogentov,
 	* Small polishing, version changed
 * 03 September 2023
 	* Python wrapper update
+* 27 Oct 2023, branch "NewParallel"
+	* improve multitask functionality
+	* new implementation of NLFFF parallelization
+	* fix "single-pixel" artifact problem
+
