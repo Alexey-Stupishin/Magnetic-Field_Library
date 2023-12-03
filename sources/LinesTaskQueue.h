@@ -6,7 +6,7 @@
 class CLinesTaskQueue
 {
 public:
-    enum Status { None = 0, Processed = 1, Lined = 2, Closed = 4, BaseVoxel = 8 };
+    enum Status { None = 0, Processed = 1, Lined = 2, Closed = 4, BaseVoxel = 8, OnlyFootpoint = 16 };
     enum Conditions { NoCond = 0, PassClosed = 1, PassOpen = 2 };
 
 protected:
@@ -214,7 +214,7 @@ public:
             {
                 resLength = end-start+1;
                 bool bStartClosed = false, bEndClosed = false;
-                Status sClosed;
+                int sClosed;
                 if (result[3*start+2] <= chromoLevel && result[3*(start+1)+2] >= chromoLevel)
                     getDivPoint(result + 3*start, result + 3*(start+1));
 
@@ -229,7 +229,7 @@ public:
                     if (result[3 * end + 2] <= chromoLevel + closedTol)
                         bEndClosed = true;
 
-                    sClosed = (bStartClosed && bEndClosed ? Status::Closed : Status::None);
+                    sClosed = (bStartClosed && bEndClosed ? Status::Closed : Status::None) | (bStartClosed != bEndClosed ? Status::OnlyFootpoint : Status::None);
 
                     REALTYPE_A B0[3], B1[3], B, Bprev;
 
@@ -338,7 +338,7 @@ public:
         return getGlobalID(coord[0], coord[1], coord[2]);
     }
 
-    uint32_t proceedThisVox(int queueID, Status sClosed, REALTYPE_A thisPhysLength, REALTYPE_A thisAvField, int apexid, int seedid, int startid, int endid)
+    uint32_t proceedThisVox(int queueID, int sClosed, REALTYPE_A thisPhysLength, REALTYPE_A thisAvField, int apexid, int seedid, int startid, int endid)
     {
         if (voxelStatus)
             setVoxelStatus(queueID, Status::Processed | Status::Lined | sClosed);
@@ -362,7 +362,7 @@ public:
         return 0;
     }
 
-    uint32_t proceedVox(REALTYPE_A *coord, int /* queueID */, Status sClosed, REALTYPE_A thisPhysLength, REALTYPE_A thisAvField, int apexid, int seedid, int startid, int endid)
+    uint32_t proceedVox(REALTYPE_A *coord, int /* queueID */, int sClosed, REALTYPE_A thisPhysLength, REALTYPE_A thisAvField, int apexid, int seedid, int startid, int endid)
     {
         int gidx = getGlobalID(coord);
 

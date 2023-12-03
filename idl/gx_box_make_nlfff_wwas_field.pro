@@ -60,7 +60,7 @@
 ;   Any COMP conditions can be combined
 ;   COMP cannot be combined with BABS and LOS
 ;        
-;   Note, that wrapping library also provides interfaces for C/C++ and MATLAB
+;   Note, that wrapping library also provides interfaces for C/C++, Python, and MATLAB
 ;   
 ; (c) Alexey G. Stupishin, Saint Petersburg State University, Saint Petersburg, Russia, 2017-2022
 ;     mailto:agstup@yandex.ru

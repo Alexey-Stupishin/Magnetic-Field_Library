@@ -2,7 +2,7 @@
 ; IDL Wrapper to external call to claculate magnetic fields line properties
 ;   using Weighted Wiegelmann NLFF Field Reconstruction library
 ;   
-; v 2.3.21.217 (rev.392)
+; v 3.4.23.1203 (rev.797)
 ; min WWWNLFFFReconstruction version: v 2.3.21.217 (rev.392)
 ; 
 ; Call (see parameters and comments below):
@@ -92,13 +92,14 @@
 ;     1 - set if the voxel belong to some line
 ;     2 - set if it is closed line
 ;     3 - set if the line was calculated from this voxel (the voxel is seed)  
+;     4 - set if exactly one end of the line are opened (since library version 3.4.23.1203 (rev.797))
 ;
 ;   Return value:
 ;     Normally 0. If not all lines are stored, returns the number of non-stored lines
 ;    
-;   Note, that wrapping library also provides interfaces for C/C++ and MATLAB
+;   Note, that wrapping library also provides interfaces for C/C++, Python, and MATLAB
 ;   
-; (c) Alexey G. Stupishin, Saint Petersburg State University, Saint Petersburg, Russia, 2017-2022
+; (c) Alexey G. Stupishin, Saint Petersburg State University, Saint Petersburg, Russia, 2017-2023
 ;     mailto:agstup@yandex.ru
 ;
 ;--------------------------------------------------------------------------;

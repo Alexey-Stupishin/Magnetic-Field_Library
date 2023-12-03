@@ -4,9 +4,6 @@
 
 class CNLFFFLinesTaskQueue : public CLinesTaskQueue
 {
-public:
-    enum Status { None = 0, Processed = 1, Lined = 2, Closed = 4, BaseVoxel = 8 };
-
 protected:
     REALTYPE_A *seeds;
 
