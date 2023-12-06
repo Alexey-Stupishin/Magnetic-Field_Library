@@ -6,7 +6,7 @@ See [Licence](https://github.com/Alexey-Stupishin/Magnetic-Field_Library/blob/ma
 
 The repository contains:
 * sources of Magnetic Field Library (C++11)
-* Windows .dll and Linux .so libraries
+* Windows .dll
 * projects for build under Windows and Linux
 * wrappers for IDL calls
 * wrappers for Python calls
@@ -18,9 +18,6 @@ This repository contains submodule [common](https://github.com/Alexey-Stupishin/
 
 ## Routines
 * _/binaries/WWNLFFFReconstruction.dll_ - Calculation library for Windows
-* _/binaries/WWNLFFFReconstruction.so_ - Calculation library for Linux (tested at Ubuntu 20.04.4 LTS, Linux 5.4.0-121-generic, x86-64)
-* _/binaries/WWNLFFFReconstruction_x86-64.so_ - Calculation library for Linux (Mac Intel chip, x86-64)
-* _/binaries/WWNLFFFReconstruction_arm64.so_ - Calculation library for Linux (Mac M1 chip, arm64)
 * _/idl/gx_box_calculate_lines.pro_ - IDL wrapper to calculate magnetic field lines (see comments in the function)
 * _/idl/gx_box_make_nlfff_wwas_field.pro_ - IDL wrapper to reconstruct non-linear force-free magnetic field (NLFFF) by T.Wiegelmann (weighted) method  (see comments in the function)
 * _/idl/gx_box_field_library_version.pro_ - IDL wrapper to get library version info  (see comments in the function)
@@ -29,7 +26,7 @@ This repository contains submodule [common](https://github.com/Alexey-Stupishin/
 * _/Windows_ - MSVC project for Windows (Visual Studio 2015)
 * _/Linux_ - makefile (g++) for Linux
 
-For NLFFF Weghted method please refer to:
+For NLFFF Weighted method please refer to:
 Wiegelmann, T. Optimization code with weighting function for the reconstruction of coronal magnetic fields. _Solar Phys_., 2004, __219__, 87–108. ([doi:10.1023/B:SOLA.0000021799.39465.36](https://link.springer.com/article/10.1023/B:SOLA.0000021799.39465.36), [ADS:2004SoPh..219...87W](https://ui.adsabs.harvard.edu/abs/2004SoPh..219...87W/abstract), [arXiv:0802.0124](https://arxiv.org/abs/0802.0124))
 
 Some proves and using of this library can be found in:
