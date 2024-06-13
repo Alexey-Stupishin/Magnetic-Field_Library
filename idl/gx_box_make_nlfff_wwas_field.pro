@@ -208,12 +208,11 @@ function gx_box_make_nlfff_wwas_field, lib_location, box, version_info = version
   endif
   parameterMap[nParameters].itemName = '!____idl_map_terminator_key___!';
 
-  bx = double(box.bx)
-  by = double(box.by)
-  bz = double(box.bz)
+  bx = double(transpose(box.by, [1, 0, 2]))
+  by = double(transpose(box.bx, [1, 0, 2]))
+  bz = double(transpose(box.bz, [1, 0, 2]))
 
   sz = size(bx)
- ; returnCode = 0
   returnCode = CALL_EXTERNAL(lib_location, 'mfoNLFFF', parameterMap, sz[1:3], bx, by, bz, $
               abs_field, abs_field_weight, $
               los_projection, los_projection_weight, los_projection_dir_cos, $
@@ -227,9 +226,9 @@ function gx_box_make_nlfff_wwas_field, lib_location, box, version_info = version
               field_component_z_max, field_component_z_max_weight, $
               VALUE = value, /CDECL, /UNLOAD)
 
-  box.bx = bx
-  box.by = by
-  box.bz = bz
+  box.bx = transpose(by, [1, 0, 2])
+  box.by = transpose(bx, [1, 0, 2])
+  box.bz = transpose(bz, [1, 0, 2])
   
   expr = stregex(box.id,'(.+)\.([A-Z]+)',/subexpr,/extract)
   box.id = expr[1] + '.NAS'
